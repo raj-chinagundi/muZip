@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../static/styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Stick&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
+    <title>Piccauto</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="font-size:50px">µZip</h1>
+        <br>
+        <h2>Download your favourite artist's music</h2>
+
+
+
+        <div class="email-form">
+            {% if message %}
+            <p class="message">{{ message | safe }}</p>
+            {% endif %}
+            <form action="/send_audio/" method="post">
+                <div class="form-group">
+                    <h3>ARTIST</h3>
+                    <input type="text" name="artist" placeholder="Which artist are you lookin for?" />
+                </div>
+                <div class="form-group">
+                    <h3>Number of songs</h3>
+                    <input type="number" name="songNumber" placeholder="Enter a number" min="1" max="50" class="num" />
+                </div>
+                <div class="form-group">
+
+
+                </div>
+                {% if success %}
+                <div class="success">
+                    Success!
+                </div>
+                {% endif %}
+
+                {% if error %}
+                <div class="error">
+                    There was an error. Please try again.
+                </div>
+                {% endif %}
+                <form action="{{url_for('send_audio')}}">
+                    <input type="submit" value="Download" class="btn" />
+                </form>
+            </form>
+        </div>
+</body>
+
+</html>
